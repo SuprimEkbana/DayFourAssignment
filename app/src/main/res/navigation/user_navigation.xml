@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_navigation"
+    app:startDestination="@id/personListFragment">
+
+    <fragment
+        android:id="@+id/personListFragment"
+        android:name="com.np.suprimpoudel.daythreeassignment.PersonListFragment"
+        android:label="fragment_person_list"
+        tools:layout="@layout/fragment_todo_list" >
+        <action
+            android:id="@+id/action_personListFragment_to_personAddFragment"
+            app:destination="@id/personAddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personAddFragment"
+        android:name="com.np.suprimpoudel.daythreeassignment.PersonAddFragment"
+        android:label="fragment_person_add"
+        tools:layout="@layout/fragment_todo_add" />
+</navigation>

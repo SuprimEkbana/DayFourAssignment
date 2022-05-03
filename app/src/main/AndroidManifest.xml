@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DayThreeAssignment">
         <activity
-            android:name=".MainActivity"
+            android:name=".features.activity.UserDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".features.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

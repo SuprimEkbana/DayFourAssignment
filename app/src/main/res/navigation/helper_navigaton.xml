@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.np.suprimpoudel.daythreeassignment.LoginFragment"
+        android:name="com.np.suprimpoudel.daythreeassignment.features.fragment.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.np.suprimpoudel.daythreeassignment.SignUpFragment"
+        android:name="com.np.suprimpoudel.daythreeassignment.features.fragment.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" />
 </navigation>

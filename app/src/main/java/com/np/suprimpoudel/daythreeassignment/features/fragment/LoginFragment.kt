@@ -1,6 +1,7 @@
-package com.np.suprimpoudel.daythreeassignment
+package com.np.suprimpoudel.daythreeassignment.features.fragment
 
 import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,42 +11,58 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-import com.np.suprimpoudel.daythreeassignment.databinding.FragmentSignUpBinding
+import com.google.firebase.auth.FirebaseUser
+import com.np.suprimpoudel.daythreeassignment.R
+import com.np.suprimpoudel.daythreeassignment.databinding.FragmentLoginBinding
+import com.np.suprimpoudel.daythreeassignment.features.activity.UserDashboard
+import com.np.suprimpoudel.daythreeassignment.network.FirebaseService
 
-class SignUpFragment : Fragment() {
+class LoginFragment : Fragment() {
 
-    private lateinit var binding: FragmentSignUpBinding
+    private val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+
     private lateinit var dialog: Dialog
+    private lateinit var binding: FragmentLoginBinding
 
-    private val firebaseAuth = FirebaseAuth.getInstance()
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_sign_up, container, false)
+        return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding = FragmentSignUpBinding.bind(view)
+        binding = FragmentLoginBinding.bind(view)
 
+
+        checkIfLoggedIn()
+        initFirebaseService()
         initListener()
         initDialog()
     }
 
-    private fun initListener() {
-        binding.imgBackBtn.setOnClickListener {
-            popBack()
+    private fun checkIfLoggedIn() {
+        if(user != null) {
+            startActivity(Intent(context, UserDashboard::class.java))
+            activity?.finish()
         }
-        binding.txtLoginBtn.setOnClickListener {
-            popBack()
-        }
-        binding.btnSignUp.setOnClickListener { v ->
-            signUpUser(v)
-        }
+    }
 
+    private fun initFirebaseService() {
+        firebaseAuth = FirebaseService.getFirebaseAuth()
+    }
+
+    private fun initListener() {
+        binding.btnLogin.setOnClickListener { v ->
+            loginInIntoAccount(v)
+        }
+        binding.txtSignUpBtn.setOnClickListener {
+            redirectToSignUpScreen()
+        }
     }
 
     private fun initDialog() {
@@ -54,28 +71,24 @@ class SignUpFragment : Fragment() {
         dialog.setCancelable(false)
     }
 
-    private fun popBack() {
-        findNavController().popBackStack()
-    }
-
-    private fun signUpUser(v: View) {
-        val email = binding.edtEmailAddressSignUp.text.toString().trim()
-        val password = binding.edtPasswordSignUp.text.toString().trim()
+    private fun loginInIntoAccount(v: View) {
+        val email = binding.edtEmailAddress.text.toString().trim()
+        val password = binding.edtPassword.text.toString().trim()
 
         if (email.isEmpty() || password.isEmpty()) {
             Snackbar.make(v, "Please input all fields", Snackbar.LENGTH_SHORT).show()
         } else {
             dialog.show()
-            firebaseAuth.createUserWithEmailAndPassword(email, password)
+            firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         dialog.dismiss()
-                        showSnackBar("Created account successfully", v)
-                        popBack()
+                        showSnackBar("Valid Credentials", v)
                     } else {
                         dialog.dismiss()
                         showSnackBar(task.exception?.localizedMessage!!, v)
                         Log.d("Error", task.exception?.localizedMessage!!)
+
                     }
                 }
                 .addOnFailureListener {
@@ -88,5 +101,9 @@ class SignUpFragment : Fragment() {
 
     private fun showSnackBar(message: String, v: View) {
         Snackbar.make(v, message, Snackbar.LENGTH_SHORT).show()
+    }
+
+    private fun redirectToSignUpScreen() {
+        findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
     }
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".SignUpFragment">
+    tools:context=".features.fragment.SignUpFragment">
 
     <ImageView
         android:id="@+id/imgBackBtn"
@@ -27,15 +27,27 @@
         app:layout_constraintStart_toEndOf="@id/imgBackBtn"
         app:layout_constraintTop_toTopOf="@id/imgBackBtn" />
 
-    <ImageView
-        android:id="@+id/imgGroup"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgProfilePicture"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:src="@drawable/ic_baseline_person_24"
         android:layout_marginTop="30dp"
-        android:src="@drawable/group"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgBackBtn" />
+        app:layout_constraintTop_toBottomOf="@id/imgBackBtn"/>
+
+    <TextView
+        android:id="@+id/txtSelectPicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+        android:text="Please select a photo"
+        android:textColor="#F4511E"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgProfilePicture"/>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilEmailSignUp"
@@ -44,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgGroup">
+        app:layout_constraintTop_toBottomOf="@id/txtSelectPicture">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtEmailAddressSignUp"
