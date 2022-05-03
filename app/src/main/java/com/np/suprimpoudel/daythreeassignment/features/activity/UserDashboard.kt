@@ -27,6 +27,7 @@ class UserDashboard : AppCompatActivity() {
 
         setUpNavigationController()
         setUpActionBarWithNavController()
+        setUpBottomNavigationWithNavController()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -49,4 +50,9 @@ class UserDashboard : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
+
+    private fun setUpBottomNavigationWithNavController() {
+        NavigationUI.setupWithNavController(binding.bottomNavUserDashboard, navController)
+    }
+
 }

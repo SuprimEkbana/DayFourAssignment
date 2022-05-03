@@ -153,8 +153,11 @@ class SignUpFragment : Fragment() {
     private fun storeDataFirebase(url: Uri?, uid: String, v: View) {
 
         val u = User(
-            uid,
-            url.toString()
+            uid = uid,
+            fullName = binding.edtFullNameSignUp.text.toString().trim(),
+            email = binding.edtEmailAddressSignUp.text.toString().trim(),
+            phoneNumber = binding.edtPhoneSignUp.text.toString().trim(),
+            profileImageUrl = url.toString()
         )
 
         firebaseDatabase = FirebaseDatabase.getInstance()
@@ -166,7 +169,7 @@ class SignUpFragment : Fragment() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     dialog.dismiss()
-                    showSnackBar("Sign Up Successfull", v)
+                    showSnackBar("Sign Up Successful", v)
                     findNavController().popBackStack()
                 }
             }

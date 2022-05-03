@@ -48,15 +48,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imgProfilePicture"/>
 
-
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilEmailSignUp"
+        android:id="@+id/tilFullNameSignUp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txtSelectPicture">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtFullNameSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Full Name"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilEmailSignUp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tilFullNameSignUp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtEmailAddressSignUp"
@@ -83,6 +98,23 @@
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilPhoneSignUp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:prefixText="+977"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tilPasswordSignUp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtPhoneSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number"
+            android:inputType="phone" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSignUp"
         android:layout_width="match_parent"
@@ -92,7 +124,7 @@
         android:text="SignUp"
         app:cornerRadius="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tilPasswordSignUp" />
+        app:layout_constraintTop_toBottomOf="@id/tilPhoneSignUp" />
 
     <LinearLayout
         android:layout_width="match_parent"
