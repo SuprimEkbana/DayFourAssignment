@@ -9,19 +9,24 @@
         android:id="@+id/feed_list"
         android:name="com.np.suprimpoudel.daythreeassignment.PersonListFragment"
         android:label="fragment_person_list"
-        tools:layout="@layout/fragment_todo_list">
-        <action
-            android:id="@+id/action_personListFragment_to_personAddFragment"
-            app:destination="@id/personAddFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/personAddFragment"
-        android:name="com.np.suprimpoudel.daythreeassignment.PersonAddFragment"
-        android:label="fragment_person_add"
-        tools:layout="@layout/fragment_todo_add" />
+        tools:layout="@layout/fragment_todo_list"/>
     <fragment
         android:id="@+id/userDetailsFragment"
         android:name="com.np.suprimpoudel.daythreeassignment.UserDetailsFragment"
         android:label="fragment_user_details"
         tools:layout="@layout/fragment_user_details" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.np.suprimpoudel.daythreeassignment.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.np.suprimpoudel.daythreeassignment.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_settingFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+    </fragment>
 </navigation>

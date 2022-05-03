@@ -26,25 +26,13 @@ class UserDashboard : AppCompatActivity() {
         setContentView(binding.root)
 
         setUpNavigationController()
-        setUpActionBarWithNavController()
         setUpBottomNavigationWithNavController()
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.user_menu, menu)
-        return super.onCreateOptionsMenu(menu)
     }
 
     private fun setUpNavigationController() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainerUserDashboard) as NavHostFragment
         navController = navHostFragment.navController
-    }
-
-    private fun setUpActionBarWithNavController() {
-        NavigationUI.setupActionBarWithNavController(this, navController)
-        AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -47,8 +47,7 @@ class LoginFragment : Fragment() {
 
     private fun checkIfLoggedIn() {
         if(user != null) {
-            startActivity(Intent(context, UserDashboard::class.java))
-            activity?.finish()
+            redirectToUserDashboard()
         }
     }
 
@@ -83,7 +82,7 @@ class LoginFragment : Fragment() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         dialog.dismiss()
-                        showSnackBar("Valid Credentials", v)
+                        redirectToUserDashboard()
                     } else {
                         dialog.dismiss()
                         showSnackBar(task.exception?.localizedMessage!!, v)
@@ -105,5 +104,10 @@ class LoginFragment : Fragment() {
 
     private fun redirectToSignUpScreen() {
         findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
+    }
+
+    private fun redirectToUserDashboard() {
+        startActivity(Intent(context, UserDashboard::class.java))
+        activity?.finish()
     }
 }

@@ -14,7 +14,7 @@
         app:showAsAction="withText" />
 
     <item
-        android:id="@+id/personAddFragment"
+        android:id="@+id/settingFragment"
         android:icon="@drawable/ic_baseline_settings_24"
         android:title="Settings"
         app:showAsAction="withText" />
