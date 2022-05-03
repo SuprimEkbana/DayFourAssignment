@@ -1,4 +1,4 @@
-package com.np.suprimpoudel.daythreeassignment.features.fragment
+package com.np.suprimpoudel.daythreeassignment.features.fragment.onboarding_helper
 
 import android.app.Dialog
 import android.content.Intent
@@ -92,8 +92,7 @@ class LoginFragment : Fragment() {
                 }
                 .addOnFailureListener {
                     dialog.dismiss()
-                    showSnackBar(it.localizedMessage, v)
-                    Log.d("Error", it.localizedMessage)
+                    it.localizedMessage?.let { it1 -> showSnackBar(it1, v) }
                 }
         }
     }

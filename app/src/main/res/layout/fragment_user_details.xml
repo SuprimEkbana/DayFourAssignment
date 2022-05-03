@@ -7,7 +7,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".UserDetailsFragment">
+    tools:context=".features.fragment.user_dashboard.UserDetailsFragment">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imgUserProfilePicture"
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:padding="5dp"
-        android:text="Update Profile Picture"
+        android:text="@string/update_profile_picture"
         android:textColor="#F4511E"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -37,7 +37,7 @@
             android:id="@+id/edtUserFullName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Full Name"
+            android:hint="@string/full_name"
             android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -51,7 +51,7 @@
             android:id="@+id/edtUserEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email Address"
+            android:hint="@string/email_address"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,7 +65,7 @@
             android:id="@+id/edtUserPhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Phone Number"
+            android:hint="@string/phone_number"
             android:inputType="phone" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:backgroundTint="#F4511E"
-        android:text="Update"
+        android:text="@string/update"
         app:cornerRadius="30dp" />
 
 </LinearLayout>

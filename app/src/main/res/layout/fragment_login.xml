@@ -7,19 +7,19 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".features.fragment.LoginFragment">
+    tools:context=".features.fragment.onboarding_helper.LoginFragment">
 
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:contentDescription="Group of People"
+        android:contentDescription="@string/group_of_people"
         android:src="@drawable/group" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="Login"
+        android:text="@string/login"
         android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="bold" />
@@ -34,7 +34,7 @@
             android:id="@+id/edtEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email Address"
+            android:hint="@string/email_address"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -48,7 +48,7 @@
             android:id="@+id/edtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:backgroundTint="#F4511E"
-        android:text="Login"
+        android:text="@string/login"
         app:cornerRadius="30dp" />
 
     <LinearLayout
@@ -70,14 +70,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Don't have an account?" />
+            android:text="@string/don_t_have_an_account" />
 
         <TextView
             android:id="@+id/txtSignUpBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="Sign Up"
+            android:text="@string/signup"
             android:textColor="#F4511E" />
     </LinearLayout>
 

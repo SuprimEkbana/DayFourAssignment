@@ -1,8 +1,7 @@
-package com.np.suprimpoudel.daythreeassignment
+package com.np.suprimpoudel.daythreeassignment.features.fragment.user_dashboard
 
 import android.app.Dialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
+import com.np.suprimpoudel.daythreeassignment.R
 import com.np.suprimpoudel.daythreeassignment.databinding.FragmentChangePasswordBinding
 import com.np.suprimpoudel.daythreeassignment.network.FirebaseService
 
@@ -55,9 +55,9 @@ class ChangePasswordFragment : Fragment() {
         val newPassword = binding.edtNewPassword.text.toString().trim()
         val retypePassword = binding.edtRetypePassword.text.toString().trim()
 
-        if(currentPassword.isEmpty() || newPassword.isEmpty() || retypePassword.isEmpty()){
+        if (currentPassword.isEmpty() || newPassword.isEmpty() || retypePassword.isEmpty()) {
             showMessage("Please enter all fields")
-        } else if(newPassword != retypePassword) {
+        } else if (newPassword != retypePassword) {
             binding.tilRetypePassword.error = "New password and retype password doesn't match"
         } else {
             dialog.show()
@@ -67,17 +67,16 @@ class ChangePasswordFragment : Fragment() {
             firebaseAuth = FirebaseService.getFirebaseAuth()
 
             firebaseAuth.currentUser?.updatePassword(newPassword)
-                ?.addOnCompleteListener{ task ->
+                ?.addOnCompleteListener { task ->
                     dialog.dismiss()
-                    if(task.isSuccessful) {
+                    if (task.isSuccessful) {
                         showMessage("Password Updated Successfully")
                         popBack()
                     }
                 }
                 ?.addOnFailureListener {
                     dialog.dismiss()
-                    Log.d("Error", it.localizedMessage)
-                    showMessage(it.localizedMessage)
+                    it.localizedMessage?.let { it1 -> showMessage(it1) }
                 }
         }
     }

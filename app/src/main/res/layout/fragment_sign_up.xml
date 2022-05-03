@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".features.fragment.SignUpFragment">
+    tools:context=".features.fragment.onboarding_helper.SignUpFragment">
 
     <ImageView
         android:id="@+id/imgBackBtn"
@@ -61,7 +61,7 @@
             android:id="@+id/edtFullNameSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Full Name"
+            android:hint="@string/full_name"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -77,7 +77,7 @@
             android:id="@+id/edtEmailAddressSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email Address"
+            android:hint="@string/email_address"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -94,7 +94,7 @@
             android:id="@+id/edtPasswordSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -111,7 +111,7 @@
             android:id="@+id/edtPhoneSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Phone Number"
+            android:hint="@string/phone_number"
             android:inputType="phone" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -121,7 +121,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:backgroundTint="#F4511E"
-        android:text="SignUp"
+        android:text="@string/signup"
         app:cornerRadius="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tilPhoneSignUp" />
@@ -137,14 +137,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Already have an account?" />
+            android:text="@string/already_have_an_account" />
 
         <TextView
             android:id="@+id/txtLoginBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="Login"
+            android:text="@string/login"
             android:textColor="#F4511E" />
     </LinearLayout>
 

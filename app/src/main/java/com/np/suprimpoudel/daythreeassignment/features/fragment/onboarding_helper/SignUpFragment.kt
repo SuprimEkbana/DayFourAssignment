@@ -1,4 +1,4 @@
-package com.np.suprimpoudel.daythreeassignment.features.fragment
+package com.np.suprimpoudel.daythreeassignment.features.fragment.onboarding_helper
 
 import android.app.Dialog
 import android.content.Intent
@@ -106,8 +106,8 @@ class SignUpFragment : Fragment() {
                     }
                     .addOnFailureListener {
                         dialog.dismiss()
-                        showSnackBar(it.localizedMessage, v)
-                        Log.d("Error", it.localizedMessage)
+                        it.localizedMessage?.let { it1 -> showSnackBar(it1, v) }
+                        it.localizedMessage?.let { it1 -> Log.d("Error", it1) }
                     }
             }
         } else {
@@ -128,7 +128,7 @@ class SignUpFragment : Fragment() {
                 profilePhotoURI
             )
         } catch (e: Exception) {
-            showSnackBar(e.localizedMessage, v)
+            e.localizedMessage?.let { showSnackBar(it, v) }
         }
         val baos = ByteArrayOutputStream()
         bitmap?.compress(Bitmap.CompressFormat.PNG, 20, baos)
@@ -136,7 +136,7 @@ class SignUpFragment : Fragment() {
         reference.putBytes(bitmapData)
             .addOnFailureListener { e ->
                 dialog.dismiss()
-                showSnackBar(e.localizedMessage, v)
+                e.localizedMessage?.let { showSnackBar(it, v) }
             }
             .addOnSuccessListener { _ ->
                 reference.downloadUrl
@@ -145,7 +145,7 @@ class SignUpFragment : Fragment() {
                     }
                     .addOnFailureListener {
                         dialog.dismiss()
-                        showSnackBar(it.localizedMessage, v)
+                        it.localizedMessage?.let { it1 -> showSnackBar(it1, v) }
                     }
             }
     }
@@ -175,7 +175,7 @@ class SignUpFragment : Fragment() {
             }
             .addOnFailureListener {
                 dialog.dismiss()
-                showSnackBar(it.localizedMessage, v)
+                it.localizedMessage?.let { it1 -> showSnackBar(it1, v) }
             }
     }
 

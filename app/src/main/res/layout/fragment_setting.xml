@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:orientation="vertical"
-    tools:context=".SettingFragment">
+    tools:context=".features.fragment.user_dashboard.SettingFragment">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardChangePassword"
@@ -19,12 +19,13 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/key_icon"
                 android:src="@drawable/ic_baseline_key_24"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="Change Password"/>
+                android:text="@string/change_password"/>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
@@ -40,12 +41,13 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/lock_icon"
                 android:src="@drawable/ic_baseline_lock_open_24"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="Logout"/>
+                android:text="@string/logout"/>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 

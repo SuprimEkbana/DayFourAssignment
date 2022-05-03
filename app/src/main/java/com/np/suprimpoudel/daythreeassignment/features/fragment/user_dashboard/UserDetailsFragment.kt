@@ -1,4 +1,4 @@
-package com.np.suprimpoudel.daythreeassignment
+package com.np.suprimpoudel.daythreeassignment.features.fragment.user_dashboard
 
 import android.app.Dialog
 import android.content.Intent
@@ -17,8 +17,9 @@ import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
+import com.np.suprimpoudel.daythreeassignment.R
 import com.np.suprimpoudel.daythreeassignment.databinding.FragmentUserDetailsBinding
-import com.np.suprimpoudel.daythreeassignment.features.fragment.SignUpFragment
+import com.np.suprimpoudel.daythreeassignment.features.fragment.onboarding_helper.SignUpFragment
 import com.np.suprimpoudel.daythreeassignment.features.shared.model.User
 import com.np.suprimpoudel.daythreeassignment.network.FirebaseService
 import com.np.suprimpoudel.daythreeassignment.utils.FirebaseConstants
@@ -128,7 +129,7 @@ class UserDetailsFragment : Fragment() {
                 }
                 ?.addOnFailureListener {
                     dialog.dismiss()
-                    showToast(it.localizedMessage)
+                    it.localizedMessage?.let { it1 -> showToast(it1) }
                 }
         }
     }
@@ -146,7 +147,7 @@ class UserDetailsFragment : Fragment() {
             }
             .addOnFailureListener {
                 dialog.dismiss()
-                showToast(it.localizedMessage)
+                it.localizedMessage?.let { it1 -> showToast(it1) }
             }
     }
 
@@ -185,7 +186,7 @@ class UserDetailsFragment : Fragment() {
                 profilePhotoURI
             )
         } catch (e: Exception) {
-            showToast(e.localizedMessage)
+            e.localizedMessage?.let { showToast(it) }
         }
         val baos = ByteArrayOutputStream()
         bitmap?.compress(Bitmap.CompressFormat.PNG, 20, baos)
@@ -193,7 +194,7 @@ class UserDetailsFragment : Fragment() {
         reference.putBytes(bitmapData)
             .addOnFailureListener { e ->
                 dialog.dismiss()
-                showToast(e.localizedMessage)
+                e.localizedMessage?.let { showToast(it) }
             }
             .addOnSuccessListener { _ ->
                 reference.downloadUrl
@@ -205,7 +206,7 @@ class UserDetailsFragment : Fragment() {
                     }
                     .addOnFailureListener {
                         dialog.dismiss()
-                        showToast(it.localizedMessage)
+                        it.localizedMessage?.let { it1 -> showToast(it1) }
                     }
             }
     }

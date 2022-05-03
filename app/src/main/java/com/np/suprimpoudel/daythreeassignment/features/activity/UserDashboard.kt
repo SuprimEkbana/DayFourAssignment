@@ -1,16 +1,10 @@
 package com.np.suprimpoudel.daythreeassignment.features.activity
 
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
-import android.view.Menu
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.np.suprimpoudel.daythreeassignment.R
 import com.np.suprimpoudel.daythreeassignment.databinding.ActivityUserDashboardBinding
 
