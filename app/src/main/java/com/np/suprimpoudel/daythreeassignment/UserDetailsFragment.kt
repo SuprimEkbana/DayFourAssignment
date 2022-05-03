@@ -21,6 +21,7 @@ class UserDetailsFragment : Fragment() {
     private lateinit var binding: FragmentUserDetailsBinding
     private lateinit var firebaseDatabase: FirebaseDatabase
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var userData: DatabaseReference
     private lateinit var user: User
     private lateinit var dialog: Dialog
 
@@ -37,11 +38,12 @@ class UserDetailsFragment : Fragment() {
         binding = FragmentUserDetailsBinding.bind(view)
 
         initDialog()
+        initListener()
         initFirebase()
 
         dialog.show()
 
-        val userData = firebaseDatabase
+        userData = firebaseDatabase
             .reference.child(FirebaseConstants.DATA_USERS)
 
         populateData(userData)
@@ -84,5 +86,49 @@ class UserDetailsFragment : Fragment() {
                 findNavController().popBackStack()
             }
         })
+    }
+
+    private fun initListener() {
+        binding.btnUpdateProfile.setOnClickListener {
+            updateProfile()
+        }
+    }
+
+    private fun updateProfile() {
+        val email = binding.edtUserEmailAddress.text.toString()
+        val phoneNumber = binding.edtUserPhoneNumber.text.toString()
+        val fullName = binding.edtUserFullName.text.toString()
+
+        if(email.isNotEmpty() && phoneNumber.isNotEmpty() && fullName.isNotEmpty()) {
+            dialog.show()
+            firebaseAuth.currentUser?.updateEmail(binding.edtUserEmailAddress.text.toString().trim())
+                ?.addOnCompleteListener { task ->
+                    if(task.isSuccessful) {
+                        updateOtherDetails()
+                    }
+                }
+                ?.addOnFailureListener {
+                    dialog.dismiss()
+                    showToast(it.localizedMessage)
+                }
+        }
+    }
+
+    private fun updateOtherDetails() {
+        userData.child("${firebaseAuth.currentUser?.uid}/${FirebaseConstants.DATA_FULL_NAME}").setValue(binding.edtUserFullName.text.toString().trim())
+        userData.child("${firebaseAuth.currentUser?.uid}/${FirebaseConstants.DATA_EMAIL_ADDRESS}").setValue(binding.edtUserEmailAddress.text.toString().trim())
+        userData.child("${firebaseAuth.currentUser?.uid}/${FirebaseConstants.DATA_PHONE_NUMBER}").setValue(binding.edtUserPhoneNumber.text.toString().trim())
+            .addOnSuccessListener {
+                dialog.dismiss()
+                showToast("Profile Updated")
+            }
+            .addOnFailureListener {
+                dialog.dismiss()
+                showToast(it.localizedMessage)
+            }
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }
